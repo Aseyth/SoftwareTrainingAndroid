@@ -1,6 +1,7 @@
 package com.example.ung.food;
 
 import android.app.SearchManager;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
@@ -28,6 +29,8 @@ import java.util.List;
  * Created by Ung on 29/12/2015.
  */
 public class MainPage extends AppCompatActivity {
+
+    static List<Recipe> recipeList = new ArrayList<Recipe>();
 
     /*ArrayAdapter<String> adapter;
     EditText et;
@@ -128,6 +131,23 @@ public class MainPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view_with_simple_adapter);
+
+        RestUserConnection userConnection = new RestUserConnection();
+        RestRequestRecipes requestRecipes = new RestRequestRecipes();
+
+        userConnection.execute();
+
+        /*
+        try {
+            Thread.sleep(5000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+        */
+        requestRecipes.execute();
+
+
+
 
 
         chapterListAdapter = new CodeLearnAdapter();

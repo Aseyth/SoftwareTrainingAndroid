@@ -31,6 +31,10 @@ public class LoginPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
 
+        // TEST //
+
+
+
         b1=(Button)findViewById(R.id.button);
         ed1=(EditText)findViewById(R.id.editText);
         ed2=(EditText)findViewById(R.id.editText2);
