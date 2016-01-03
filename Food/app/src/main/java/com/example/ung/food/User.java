@@ -5,6 +5,7 @@ package com.example.ung.food;
  */
 public class User {
 
+
     enum Type
     {
         CONSUMER,
@@ -12,6 +13,23 @@ public class User {
         SUPPLIER
     };
 
+    private String displayName;
     private Type type;
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
 
 }

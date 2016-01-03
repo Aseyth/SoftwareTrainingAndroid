@@ -40,6 +40,8 @@ public class JsonParser {
     // USER
 
     private static final String USER_ID = "_id"; // String
+    private static final String DISPLAY_NAME = "displayName"; // String
+    private static final String TYPE = "roles";
 
     private JSONArray jRecipe;
     private JSONObject jsonObject;
@@ -132,6 +134,26 @@ public class JsonParser {
     public Boolean checkConnection() throws JSONException {
         if (jsonObject.getString(USER_ID) != null)
         {
+            MainPage.user.setDisplayName(jsonObject.getString(DISPLAY_NAME));
+
+            JSONArray jsonArray = jsonObject.getJSONArray("roles");
+
+            // Consumer / Gastronomist / Supplier
+            switch (jsonArray.get(0).toString())
+            {
+                case "consumer":
+                    MainPage.user.setType(User.Type.CONSUMER);
+                    break;
+                case "gastronomist":
+                    MainPage.user.setType(User.Type.GASTRONOMIST);
+                    break;
+                case "supplier":
+                    MainPage.user.setType(User.Type.SUPPLIER);
+                    break;
+
+            }
+
+            System.out.println(MainPage.user.getType().toString());
             return true;
         }
         return false;
