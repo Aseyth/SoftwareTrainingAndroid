@@ -1,6 +1,8 @@
 package com.example.ung.food;
 
 import android.app.SearchManager;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +56,7 @@ public class MainPage extends ActionBarActivity{ //extends AppCompatActivity{
     public class codeLeanChapter {
         String chapterName;
         String chapterDescription;
+        Bitmap image;
         String idRecipe;
     }
 
@@ -104,11 +108,12 @@ public class MainPage extends ActionBarActivity{ //extends AppCompatActivity{
 
             TextView chapterName = (TextView)arg1.findViewById(R.id.textView1);
             TextView chapterDesc = (TextView)arg1.findViewById(R.id.textView2);
-
+            ImageView chapterImg = (ImageView)arg1.findViewById(R.id.imageView1);
             codeLeanChapter chapter = codeLeanChapterList.get(arg0);
 
             chapterName.setText(chapter.chapterName);
             chapterDesc.setText(chapter.chapterDescription);
+            chapterImg.setImageBitmap(chapter.image);
 
             return arg1;
         }
@@ -138,17 +143,14 @@ public class MainPage extends ActionBarActivity{ //extends AppCompatActivity{
             chapter.chapterName = recipeList.get(i).getName();
             chapter.chapterDescription = recipeList.get(i).getDescription();
             chapter.idRecipe = recipeList.get(i).getId();
+            if (recipeList.get(i).getImage() != null)
+                chapter.image = recipeList.get(i).getImage();
             codeLeanChaptersList.add(chapter);
         }
 
 
         return codeLeanChaptersList;
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        moveTaskToBack(true);
     }
 
     public void updateViewList()

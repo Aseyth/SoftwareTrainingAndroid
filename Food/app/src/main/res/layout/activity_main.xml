@@ -5,7 +5,8 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:background="#90caf9">
 
     <include
         android:id="@+id/toolbar"
@@ -21,7 +22,8 @@
         android:layout_below="@+id/createButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="58dp" />
+        android:layout_marginTop="58dp"
+        android:background="#90caf9" />
 
     <Button
         android:layout_width="wrap_content"

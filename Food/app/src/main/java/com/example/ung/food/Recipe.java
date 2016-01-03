@@ -91,4 +91,26 @@ public class Recipe {
     public void setImage(Bitmap image) {
         this.image = image;
     }
+
+    public String getLabelProducts()
+    {
+        String label = "";
+
+        for (int i = 0; i < products.size(); i++)
+        {
+            label += products.get(i).getName() + "\n";
+        }
+        return label;
+    }
+
+    public String getLabelIngredients()
+    {
+        String label = "";
+
+        for (int i = 0; i < ingredients.size(); i++)
+        {
+            label += ingredients.get(i).getName() + "\n";
+        }
+        return label;
+    }
 }

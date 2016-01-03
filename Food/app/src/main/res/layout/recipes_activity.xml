@@ -2,7 +2,8 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="#90caf9">
 
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -49,26 +50,11 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Muslim Friendly"
-        android:id="@+id/muslimFriendly"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:layout_marginTop="5dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentStart="false"
-        android:layout_below="@+id/healthy" />
-
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Healthy"
         android:id="@+id/healthy"
         android:textAlignment="center"
         android:layout_below="@+id/imageReceipe"
-        android:layout_alignStart="@+id/muslimFriendly"
-        android:layout_marginTop="5dp" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="150dp"
@@ -77,9 +63,8 @@
         android:text="Gluten Free"
         android:id="@+id/glutenFree"
         android:textAlignment="center"
-        android:layout_below="@+id/muslimFriendly"
-        android:layout_alignStart="@+id/muslimFriendly"
-        android:layout_marginTop="5dp" />
+        android:layout_below="@+id/healthy"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -105,6 +90,39 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="42dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/ingredientsLabel"
+        android:layout_alignParentBottom="false"
+        android:layout_alignStart="@+id/label1"
+        android:layout_below="@+id/label1"
+        android:layout_toStartOf="@+id/imageReceipe"
+        android:text="ingredient"
+        android:layout_alignParentTop="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/productsLabel"
+        android:text="products"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_below="@+id/textView3" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Muslim Friendly"
+        android:id="@+id/muslimFriendly"
+        android:textAlignment="center"
+        android:layout_below="@+id/glutenFree"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
 
 </ScrollView>
