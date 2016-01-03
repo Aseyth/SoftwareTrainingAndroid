@@ -37,11 +37,21 @@ public class JsonParser {
     private static final String INGREDIENTS = "ingredients"; // String
     private static final String INGREDIENT_NAME = "name"; // String
 
+    // USER
+
+    private static final String USER_ID = "_id"; // String
+
     private JSONArray jRecipe;
+    private JSONObject jsonObject;
 
     JsonParser(JSONArray jsonArray)
     {
         jRecipe = jsonArray;
+    }
+
+    JsonParser(JSONObject jsonObject)
+    {
+        this.jsonObject = jsonObject;
     }
 
     public List<Recipe> getAllRecipes() throws JSONException {
@@ -117,5 +127,13 @@ public class JsonParser {
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
         return decodedByte;
+    }
+
+    public Boolean checkConnection() throws JSONException {
+        if (jsonObject.getString(USER_ID) != null)
+        {
+            return true;
+        }
+        return false;
     }
 }

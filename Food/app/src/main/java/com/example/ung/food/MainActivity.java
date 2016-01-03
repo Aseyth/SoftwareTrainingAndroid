@@ -30,6 +30,25 @@ public class MainActivity extends Activity {
     TextView tx1;
     int counter = 3;
 
+
+    OnTaskCompleted taskCompleted = new OnTaskCompleted() {
+        @Override
+        public void onAllReceipesReceived() {
+
+        }
+
+        @Override
+        public void onTryLoggin(Boolean isConnected) {
+            if (isConnected) {
+                Intent intent = new Intent(MainActivity.this, MainPage.class);
+                startActivity(intent);
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,17 +61,12 @@ public class MainActivity extends Activity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ed1.getText().toString().equals("") &&
-
-                        ed2.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), "Redirecting...",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, MainPage.class);
                     //based on item add info to intent
-                    startActivity(intent);
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
-                }
+
+                    RestUserConnection userConnection = new RestUserConnection(taskCompleted);
+
+                    userConnection.execute(ed1.getText().toString(), ed2.getText().toString());
+
             }
         });
 

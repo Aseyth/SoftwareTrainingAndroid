@@ -6,4 +6,5 @@ package com.example.ung.food;
 public interface OnTaskCompleted {
 
     void onAllReceipesReceived();
+    void onTryLoggin(Boolean isAccepted);
 }

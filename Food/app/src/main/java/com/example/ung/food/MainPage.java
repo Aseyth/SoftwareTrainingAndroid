@@ -2,6 +2,7 @@ package com.example.ung.food;
 
 import android.app.SearchManager;
 import android.os.AsyncTask;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
@@ -28,9 +29,10 @@ import java.util.List;
 /**
  * Created by Ung on 29/12/2015.
  */
-public class MainPage extends AppCompatActivity{
+public class MainPage extends ActionBarActivity{ //extends AppCompatActivity{
 
     static List<Recipe> recipeList = new ArrayList<Recipe>();
+    static User user = new User();
 
     OnTaskCompleted taskCompleted = new OnTaskCompleted() {
         @Override
@@ -39,6 +41,12 @@ public class MainPage extends AppCompatActivity{
             updateViewList();
             System.out.println("CALLBACK CALLED");
         }
+
+        @Override
+        public void onTryLoggin(Boolean isAccepted) {
+
+        }
+
     };
 
 
@@ -55,11 +63,8 @@ public class MainPage extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view_with_simple_adapter);
 
-
-        RestUserConnection userConnection = new RestUserConnection();
         RestRequestRecipes requestRecipes = new RestRequestRecipes(taskCompleted);
 
-        userConnection.execute();
         requestRecipes.execute();
 
         updateViewList();
