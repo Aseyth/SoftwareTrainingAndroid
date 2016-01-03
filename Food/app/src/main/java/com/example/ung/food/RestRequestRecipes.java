@@ -19,7 +19,13 @@ import java.util.Map;
 public class RestRequestRecipes extends AsyncTask<String, Void, Boolean> {
 
 
+    private OnTaskCompleted listener;
     private String url = "http://54.169.96.145:3000";
+
+    public RestRequestRecipes(OnTaskCompleted listener)
+    {
+        this.listener = listener;
+    }
 
     @Override
     protected void onPreExecute() {
@@ -41,10 +47,10 @@ public class RestRequestRecipes extends AsyncTask<String, Void, Boolean> {
     @Override
     protected void onPostExecute(Boolean aBoolean) {
 
+        listener.onAllReceipesReceived();
     }
 
     public boolean getAllRecipes() throws JSONException {
-
 
         HttpRequest request = HttpRequest.get(url + "/android/recipes");
         String json = request.body();
