@@ -27,7 +27,7 @@
     <ImageView
         android:layout_width="279dp"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
+        android:id="@+id/imgUploaded"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.71" />
 

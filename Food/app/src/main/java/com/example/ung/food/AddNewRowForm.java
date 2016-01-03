@@ -2,13 +2,18 @@ package com.example.ung.food;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,116 +24,33 @@ import java.util.List;
 
 public class AddNewRowForm extends Activity {
 
+    private ImageView ImgUploaded;
+    private EditText UploadImg;
+    private static final int RESULT_LOAD_IMG = 1;
 
-
-public class codeLeanChapter {
-    String dishName;
-    String dishDescription;
-}
-
-CodeLearnAdapter chapterListAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_view_with_simple_adapter);
+        setContentView(R.layout.new_form);
 
-
-        chapterListAdapter = new CodeLearnAdapter();
-
-        ListView codeLearnLessons = (ListView) findViewById(R.id.listView1);
-        codeLearnLessons.setAdapter(chapterListAdapter);
-
-        codeLearnLessons.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+        ImgUploaded = (ImageView) findViewById(R.id.imgUploaded);
+        UploadImg = (EditText) findViewById(R.id.formImgUp);
+        UploadImg.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                                    long arg3) {
-
-                codeLeanChapter chapter = chapterListAdapter.getCodeLearnChapter(arg2);
-
-                Toast.makeText(AddNewRowForm.this, chapter.dishName, Toast.LENGTH_LONG).show();
-
+            public void onClick(View v) {
+                Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
             }
         });
     }
 
-
-public class CodeLearnAdapter extends BaseAdapter {
-
-    List<codeLeanChapter> codeLeanChapterList = getDataForListView();
     @Override
-    public int getCount() {
-        // TODO Auto-generated method stub
-        return codeLeanChapterList.size();
-    }
-
-    @Override
-    public codeLeanChapter getItem(int arg0) {
-        // TODO Auto-generated method stub
-        return codeLeanChapterList.get(arg0);
-    }
-
-    @Override
-    public long getItemId(int arg0) {
-        // TODO Auto-generated method stub
-        return arg0;
-    }
-
-    @Override
-    public View getView(int arg0, View arg1, ViewGroup arg2) {
-
-        if(arg1==null)
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK && data != null)
         {
-            LayoutInflater inflater = (LayoutInflater) AddNewRowForm.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            arg1 = inflater.inflate(R.layout.listitem, arg2,false);
+            Uri selectedImage = data.getData();
+            ImgUploaded.setImageURI(selectedImage);
         }
-
-        TextView chapterName = (TextView)arg1.findViewById(R.id.textView1);
-        TextView chapterDesc = (TextView)arg1.findViewById(R.id.textView2);
-
-        codeLeanChapter chapter = codeLeanChapterList.get(arg0);
-
-        chapterName.setText(chapter.dishName);
-        chapterDesc.setText(chapter.dishDescription);
-
-        return arg1;
     }
-
-    public codeLeanChapter getCodeLearnChapter(int position)
-    {
-        return codeLeanChapterList.get(position);
-    }
-
-}
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.list_view_with_simple_adapter, menu);
-        return true;
-    }
-
-    public List<codeLeanChapter> getDataForListView()
-    {
-        List<codeLeanChapter> codeLeanChaptersList = new ArrayList<codeLeanChapter>();
-
-        for(int i=0;i<10;i++)
-        {
-
-            codeLeanChapter chapter = new codeLeanChapter();
-            chapter.dishName = "Chapter "+i;
-            chapter.dishDescription = "This is description for chapter "+i;
-            codeLeanChaptersList.add(chapter);
-        }
-
-        return codeLeanChaptersList;
-
-    }
-
-
-   /* @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.new_row_form);
-    }*/
 }
