@@ -1,19 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1">
-<TextView
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/tv"
-    android:text="Dish Name"
-    android:layout_weight="0.05" />
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:orientation="vertical">
+
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dish Description"
-        android:id="@+id/tv2"
-        android:layout_weight="0.69" />
-</LinearLayout>
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Dish NAME"
+        android:id="@+id/textViewName"
+        android:layout_marginTop="27dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:id="@+id/textViewDesc"
+        android:layout_below="@+id/textViewName"
+        android:layout_alignRight="@+id/textViewName"
+        android:layout_alignEnd="@+id/textViewName"
+        android:layout_marginTop="87dp"
+        android:layout_alignLeft="@+id/textViewName"
+        android:layout_alignStart="@+id/textViewName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="GlutenFree"
+        android:id="@+id/textViewGluten"
+        android:layout_below="@+id/textViewDesc"
+        android:layout_toLeftOf="@+id/textViewDesc"
+        android:layout_marginTop="63dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MusliFriendly"
+        android:id="@+id/textViewMuslim"
+        android:layout_below="@+id/textViewGluten"
+        android:layout_alignLeft="@+id/textViewGluten"
+        android:layout_alignStart="@+id/textViewGluten" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Healthy"
+        android:id="@+id/textViewHealthy"
+        android:layout_below="@+id/textViewMuslim"
+        android:layout_alignLeft="@+id/textViewMuslim"
+        android:layout_alignStart="@+id/textViewMuslim" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Products"
+        android:id="@+id/textViewProd"
+        android:layout_below="@+id/textViewHealthy"
+        android:layout_alignRight="@+id/textViewGluten"
+        android:layout_alignEnd="@+id/textViewGluten"
+        android:layout_marginTop="117dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingredients"
+        android:id="@+id/textViewIng"
+        android:layout_alignTop="@+id/textViewProd"
+        android:layout_toRightOf="@+id/textViewDesc"
+        android:layout_toEndOf="@+id/textViewDesc" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product Descriptions"
+        android:id="@+id/textViewProdDesc"
+        android:layout_below="@+id/textViewProd"
+        android:layout_alignRight="@+id/textViewProd"
+        android:layout_alignEnd="@+id/textViewProd"
+        android:layout_marginTop="31dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingredients Descriptions"
+        android:id="@+id/textViewIngDesc"
+        android:layout_alignBottom="@+id/textViewProdDesc"
+        android:layout_alignLeft="@+id/textViewIng"
+        android:layout_alignStart="@+id/textViewIng" />
+
+</RelativeLayout>
