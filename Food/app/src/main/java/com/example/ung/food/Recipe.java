@@ -1,5 +1,6 @@
 package com.example.ung.food;
 
+import android.graphics.Bitmap;
 import android.media.Image;
 import android.support.annotation.NonNull;
 
@@ -20,7 +21,7 @@ public class Recipe {
     private Boolean glutenFree;
     private Boolean healthy;
     private Boolean muslimFriendly;
-    private Image image;
+    private Bitmap image;
 
     private List<Product> products;
     private List<Ingredient> ingredients;
@@ -71,14 +72,6 @@ public class Recipe {
         this.muslimFriendly = muslimFriendly;
     }
 
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
-
     public void addIngredients(List<Ingredient> _ingredients) { ingredients = _ingredients; }
 
     public void addProducts(List<Product> _products) { products = _products; }
@@ -89,5 +82,13 @@ public class Recipe {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
     }
 }

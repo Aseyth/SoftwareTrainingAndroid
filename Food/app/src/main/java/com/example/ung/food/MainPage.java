@@ -45,6 +45,7 @@ public class MainPage extends AppCompatActivity{
     public class codeLeanChapter {
         String chapterName;
         String chapterDescription;
+        String idRecipe;
     }
 
     CodeLearnAdapter chapterListAdapter;
@@ -131,12 +132,18 @@ public class MainPage extends AppCompatActivity{
             codeLeanChapter chapter = new codeLeanChapter();
             chapter.chapterName = recipeList.get(i).getName();
             chapter.chapterDescription = recipeList.get(i).getDescription();
+            chapter.idRecipe = recipeList.get(i).getId();
             codeLeanChaptersList.add(chapter);
         }
 
 
         return codeLeanChaptersList;
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
     public void updateViewList()
@@ -157,12 +164,9 @@ public class MainPage extends AppCompatActivity{
 
                 //Create New Intent
                 Intent intent = new Intent(MainPage.this, RecipesActivity.class);
-                intent.putExtra("foodName", chapter.chapterName);
-                intent.putExtra("foodDesc", chapter.chapterDescription);
+                intent.putExtra("recipeID", chapter.idRecipe);
                 //based on item add info to intent
                 startActivity(intent);
-
-                Toast.makeText(MainPage.this, chapter.chapterName, Toast.LENGTH_LONG).show();
 
             }
         });

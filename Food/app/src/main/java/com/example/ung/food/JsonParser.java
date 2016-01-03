@@ -1,5 +1,9 @@
 package com.example.ung.food;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,6 +24,8 @@ public class JsonParser {
     private static final String GLUTEN_FREE = "glutenFree"; // Boolean
     private static final String HEALTHY = "healthy"; // Boolean
     private static final String MUSLIM_FRIENDLY = "muslimFrienfly"; // Boolean
+    private static final String IMAGE = "img"; // String
+    private static final String BASE64 = "base64";
 
     // PRODUCT
 
@@ -59,7 +65,15 @@ public class JsonParser {
         tmpRecipe.setGlutenFree(c.getBoolean(GLUTEN_FREE));
         tmpRecipe.setHealthy(c.getBoolean(HEALTHY));
         tmpRecipe.setMuslimFriendly(c.getBoolean(MUSLIM_FRIENDLY));
-        
+
+        try {
+            tmpRecipe.setImage(convertImage(c.getJSONObject(IMAGE)));
+        }
+        catch (JSONException e)
+        {
+            System.out.println("No value for img");
+        }
+
         tmpRecipe.addProducts(generateProducts(c.getJSONArray(PRODUCTS)));
         tmpRecipe.addIngredients(generateIngredients(c.getJSONArray(INGREDIENTS)));
 
@@ -93,5 +107,15 @@ public class JsonParser {
             ingredients.add(ingredient);
         }
         return ingredients;
+    }
+
+    public Bitmap convertImage(JSONObject img) throws JSONException {
+
+        String base64 = img.getString(BASE64);
+
+        byte[] decodedString = Base64.decode(base64, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+
+        return decodedByte;
     }
 }
