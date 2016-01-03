@@ -130,7 +130,7 @@ public class MainPage extends AppCompatActivity{
         {
             codeLeanChapter chapter = new codeLeanChapter();
             chapter.chapterName = recipeList.get(i).getName();
-            chapter.chapterDescription = "This is the recipe for the dish "+i;
+            chapter.chapterDescription = recipeList.get(i).getDescription();
             codeLeanChaptersList.add(chapter);
         }
 
